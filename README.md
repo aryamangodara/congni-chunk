@@ -1,64 +1,53 @@
-# 🧠 CogniChunk: Intelligent Technical Document Analyst
+# Cogni Chunk: Personal Project for Technical Document Analysis
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+Cogni Chunk is a polished personal project focused on technical document retrieval, grounded answers, and a clean interactive experience. It combines a presentable Streamlit UI, a structured notebook walkthrough, and a richer technical source document so the project feels substantial rather than toy-sized.
 
-**CogniChunk** is a sophisticated Multi-Agent RAG (Retrieval-Augmented Generation) system designed to process and analyze complex technical documentation with high precision and low latency.
+## What This Demo Shows
 
-## 🚀 Key Features
+- Structure-aware chunking from a long Markdown technical dossier
+- Grounded retrieval with visible evidence instead of opaque answers
+- A lightweight, self-contained pipeline that runs locally without external APIs
+- A stronger product narrative around latency, resilience, and explainability
 
-- **Multi-Agent Orchestration**: Leverages LangChain to coordinate specialized agents (Researcher and Technical Writer) for comprehensive document analysis.
-- **Semantic Chunking**: Moves beyond fixed-size windows to chunk documents based on semantic meaning, ensuring context preservation.
-- **Vector Intelligence**: Utilizes Pinecone for high-performance vector storage and similarity search.
-- **Performance Optimized**: Demonstrates a significant improvement in query latency (up to 40%) through optimized retrieval pipelines.
-- **Benchmarking Suite**: Includes built-in tools for validating retrieval efficiency and answer accuracy.
+## Files
 
-## 🛠️ Tech Stack
+- `Intelligent_Technical_Document_Analyst.ipynb`: polished walkthrough of the project pipeline
+- `app.py`: Streamlit interface for live demos
+- `rag_demo.py`: reusable retrieval and answer synthesis logic
+- `technical_doc.md`: expanded technical dossier used as the indexed source
 
-- **Orchestration**: [LangChain](https://www.langchain.com/)
-- **Vector Database**: [Pinecone](https://www.pinecone.io/)
-- **LLM**: OpenAI GPT models / Open-source alternatives
-- **Environment**: Jupyter Notebook / Python
+## Run The Streamlit UI
 
-## 📋 Getting Started
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
 
-### Prerequisites
+## Run A Quick Query In Python
 
-- Python 3.8+
-- Pinecone API Key
-- OpenAI API Key (or alternative LLM provider)
+```python
+from rag_demo import run_cli_query
 
-### Installation
+print(run_cli_query("What happens when the vector index is unavailable?"))
+```
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/aryamangodara/congni-chunk.git
-   cd congni-chunk
-   ```
+## Open The Notebook
 
-2. Install dependencies:
-   ```bash
-   pip install langchain pinecone-client openai tiktoken
-   ```
-
-3. Configure environment variables in a `.env` file:
-   ```env
-   PINECONE_API_KEY=your_key
-   OPENAI_API_KEY=your_key
-   ```
-
-## 📖 Usage
-
-Open the main notebook to start the analyst:
 ```bash
 jupyter notebook Intelligent_Technical_Document_Analyst.ipynb
 ```
 
-## 📊 Performance
+## Suggested Demo Questions
 
-By implementing semantic chunking and multi-agent retrieval strategies, CogniChunk achieves:
-- **40% reduction** in query latency.
-- **Higher precision** in context retrieval for complex technical queries.
+- Why did retrieval latency improve by about 40 percent in release AKF-2.3?
+- What happens when the vector index is unavailable?
+- Why were write-heavy dashboards slower during the replica failover test?
+- How does Atlas handle ingestion storms during large document migrations?
 
----
-Built with ❤️ for advanced document intelligence.
+## Project Framing
+
+The strongest pitch is:
+
+1. Start with the pain: technical docs are dense and naive search misses intent.
+2. Show the approach: preserve document structure, retrieve relevant sections, and ground the answer in evidence.
+3. Close on product quality: confidence signals, observable behavior, and a UI that helps people trust the result.

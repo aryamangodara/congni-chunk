@@ -1,5 +1,5 @@
-from pathlib import Path
 import textwrap
+from pathlib import Path
 
 import streamlit as st
 
@@ -13,8 +13,10 @@ st.set_page_config(
 )
 
 
-DOC_PATH = Path("technical_doc.md")
-analyst = TechnicalDocAnalyst(DOC_PATH)
+DOCUMENTS = {
+    "Technical Architecture Dossier": Path("technical_doc.md"),
+    "Geometry Notes PDF": Path("geometry_notes.pdf"),
+}
 
 
 st.markdown(
@@ -57,16 +59,20 @@ st.markdown(
     <div class="hero">
         <h1 style="margin-bottom:0.4rem;">Cogni Chunk</h1>
         <p style="font-size:1.05rem; margin-bottom:0.25rem;">
-            A personal project for technical document retrieval that answers architecture and operations questions from a rich technical dossier,
-            then shows the evidence behind every result.
+            A personal project for document retrieval that can answer questions from long-form markdown notes and PDF study material,
+            then show the evidence behind every result.
         </p>
         <p style="color:#475569; margin:0;">
-            Focus areas: structure-aware chunking, grounded retrieval, explainability, and a clean product experience.
+            Focus areas: structure-aware chunking, PDF-aware ingestion, grounded retrieval, and a clean product experience.
         </p>
     </div>
     """,
     unsafe_allow_html=True,
 )
+
+selected_document_name = st.selectbox("Choose a source document", list(DOCUMENTS))
+doc_path = DOCUMENTS[selected_document_name]
+analyst = TechnicalDocAnalyst(doc_path)
 
 col1, col2, col3 = st.columns(3)
 with col1:
@@ -93,13 +99,21 @@ examples = [
     "Why were write-heavy dashboards slower during the replica failover test?",
     "How does Atlas handle ingestion storms during large document migrations?",
 ]
+geometry_examples = [
+    "What is the relationship between an inscribed angle and its intercepted arc?",
+    "How do you prove two triangles are similar using parallel lines?",
+    "What are the properties of the diagonals of a square?",
+    "How does the altitude to the hypotenuse behave in a right triangle?",
+]
+
+examples = examples if doc_path.suffix.lower() == ".md" else geometry_examples
 
 selected_example = st.selectbox("Demo query", options=["Custom question"] + examples)
 default_query = "" if selected_example == "Custom question" else selected_example
 query = st.text_input(
-    "Ask a technical question",
+    "Ask a question about the current document",
     value=default_query,
-    placeholder="Example: What metrics should on-call engineers watch after a retriever deployment?",
+    placeholder="Example: What is the relationship between an inscribed angle and its intercepted arc?",
 )
 
 left, right = st.columns([1.5, 1.0])
@@ -107,12 +121,13 @@ left, right = st.columns([1.5, 1.0])
 with right:
     st.subheader("Project Notes")
     st.write(
-        "Use this panel to explain what makes the project credible: visible evidence, grounded answers, and a richer technical source than a toy FAQ."
+        "Use this panel to explain what makes the project credible: visible evidence, grounded answers, and support for both markdown and PDF sources."
     )
-    st.caption(f"Source file: {DOC_PATH.resolve()}")
+    st.caption(f"Source file: {doc_path.resolve()}")
     with st.expander("What the app is demonstrating"):
         st.markdown(
             "- Structured section parsing from Markdown\n"
+            "- Page-aware extraction from PDFs\n"
             "- Lightweight retrieval without external APIs\n"
             "- Confidence labeling and evidence previews\n"
             "- A UI that makes the retrieval flow easy to understand and present"
@@ -147,4 +162,4 @@ with left:
         st.info("Enter a question or choose a demo query to see the retrieval pipeline in action.")
 
 with st.expander("Preview of indexed source content"):
-    st.text(DOC_PATH.read_text(encoding="utf-8")[:3000] + "\n...")
+    st.text(analyst.document_text[:3000] + "\n...")

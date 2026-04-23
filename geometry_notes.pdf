@@ -1,0 +1,706 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+2 0 obj
+<< /Length 3278 >>
+stream
+BT
+/F1 11 Tf
+54 720 Td
+(GEOMETRY NOTES COMPENDIUM) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(1. FOUNDATIONS OF EUCLIDEAN GEOMETRY) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(Geometry begins with undefined terms such as point, line, and plane. A point indicates) Tj
+0 -16 Td
+(position but has no size, a line extends infinitely in two directions, and a plane extends) Tj
+0 -16 Td
+(without bound in all directions within a flat surface. Euclidean geometry studies how these) Tj
+0 -16 Td
+(basic objects interact under axioms such as the ability to draw exactly one line through two) Tj
+0 -16 Td
+(distinct points and the assumption that all right angles are congruent.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(Distance and midpoint are fundamental measures. If point M is the midpoint of segment AB,) Tj
+0 -16 Td
+(then AM equals MB and M lies on the segment. Coordinate geometry expresses the same idea) Tj
+0 -16 Td
+(numerically. For A\(x1, y1\) and B\(x2, y2\), the midpoint is \(\(x1 + x2\) / 2, \(y1 + y2\) / 2\),) Tj
+0 -16 Td
+(while the distance between the points is the square root of \(\(x2 - x1\)^2 + \(y2 - y1\)^2\).) Tj
+0 -16 Td
+(These two formulas appear constantly in proofs about medians, bisectors, and circle centers.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(Angles measure rotation. Complementary angles sum to 90 degrees, supplementary angles sum to) Tj
+0 -16 Td
+(180 degrees, and vertical angles formed by intersecting lines are congruent. If two lines) Tj
+0 -16 Td
+(are cut by a transversal, corresponding angles and alternate interior angles become) Tj
+0 -16 Td
+(important signals for deciding whether the lines are parallel. When corresponding angles are) Tj
+0 -16 Td
+(congruent, the lines are parallel; when the lines are parallel, corresponding angles must be) Tj
+0 -16 Td
+(congruent.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(2. LINES, SLOPES, AND COORDINATE PROOF) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(In the coordinate plane, slope captures steepness and direction. The slope between points) Tj
+0 -16 Td
+(\(x1, y1\) and \(x2, y2\) is \(y2 - y1\) / \(x2 - x1\), provided x1 is not equal to x2. Parallel) Tj
+0 -16 Td
+(nonvertical lines have equal slopes, while perpendicular nonvertical lines have slopes whose) Tj
+0 -16 Td
+(product is -1. These relationships let us convert geometric claims into algebraic checks.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(The equation of a line can appear in multiple forms. Slope-intercept form y = mx + b is) Tj
+0 -16 Td
+(useful for graphing, point-slope form y - y1 = m\(x - x1\) is useful for proofs, and standard) Tj
+0 -16 Td
+(form Ax + By = C is useful for finding intercepts or solving systems. Coordinate proofs) Tj
+0 -16 Td
+(often begin by assigning convenient coordinates to a figure so that symmetry or right angles) Tj
+0 -16 Td
+(become visible. For example, an isosceles triangle can be placed so the base lies on the) Tj
+0 -16 Td
+(x-axis and the apex lies on the y-axis.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(Segment bisectors and perpendicular bisectors combine slope and midpoint. The perpendicular) Tj
+0 -16 Td
+(bisector of segment AB passes through the midpoint of AB and has slope equal to the negative) Tj
+0 -16 Td
+(reciprocal of the slope of AB. Every point on the perpendicular bisector is equidistant from) Tj
+ET
+BT
+/F1 9 Tf
+54 40 Td
+(Geometry Notes Compendium  |  Page 1 of 7) Tj
+ET
+endstream
+endobj
+3 0 obj
+<< /Length 3196 >>
+stream
+BT
+/F1 11 Tf
+54 720 Td
+(A and B, and the converse is also true. This theorem is crucial when locating circumcenters) Tj
+0 -16 Td
+(and proving symmetry.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(3. TRIANGLE BASICS) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(Triangles are classified by sides as scalene, isosceles, or equilateral and by angles as) Tj
+0 -16 Td
+(acute, right, or obtuse. The sum of the interior angles of any triangle is 180 degrees. An) Tj
+0 -16 Td
+(exterior angle of a triangle equals the sum of the two remote interior angles, a result that) Tj
+0 -16 Td
+(is surprisingly powerful in chain proofs.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(Congruence criteria describe when two triangles must be identical in shape and size. Side-) Tj
+0 -16 Td
+(Side-Side works because three side lengths completely determine a triangle. Side-Angle-Side) Tj
+0 -16 Td
+(works when the included angle is known, and Angle-Side-Angle works when the included side is) Tj
+0 -16 Td
+(known. Hypotenuse-Leg applies only to right triangles. Students often confuse SSA with a) Tj
+0 -16 Td
+(valid test, but SSA is ambiguous because two different triangles may satisfy the same side-) Tj
+0 -16 Td
+(side-angle data.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(Important segments inside a triangle include medians, altitudes, angle bisectors, and) Tj
+0 -16 Td
+(perpendicular bisectors. The centroid is the intersection point of the medians and divides) Tj
+0 -16 Td
+(each median in a 2:1 ratio, with the longer segment adjacent to the vertex. The orthocenter) Tj
+0 -16 Td
+(is the intersection of the altitudes, the circumcenter is the intersection of the) Tj
+0 -16 Td
+(perpendicular bisectors, and the incenter is the intersection of the angle bisectors. Each) Tj
+0 -16 Td
+(center carries a different type of symmetry and distance property.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(4. SIMILAR TRIANGLES) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(Two triangles are similar when their corresponding angles are congruent and their) Tj
+0 -16 Td
+(corresponding sides are proportional. Similarity can be established by AA, SAS similarity,) Tj
+0 -16 Td
+(or SSS similarity. Once similarity is proven, all corresponding linear measures scale by the) Tj
+0 -16 Td
+(same factor, areas scale by the square of the factor, and volumes of related solids scale by) Tj
+0 -16 Td
+(the cube of the factor.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(Triangle similarity solves many indirect measurement problems. If a vertical object and its) Tj
+0 -16 Td
+(shadow form a right triangle, and a second object forms a right triangle at the same time of) Tj
+0 -16 Td
+(day, then the triangles are similar because the sun creates equal angle measures. The ratio) Tj
+0 -16 Td
+(of heights equals the ratio of shadow lengths. This principle historically allowed) Tj
+0 -16 Td
+(mathematicians to estimate the height of pyramids and towers.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(Parallel lines inside triangles generate similarity repeatedly. When a line segment joins) Tj
+0 -16 Td
+(two sides of a triangle and is parallel to the third side, the small triangle formed is) Tj
+0 -16 Td
+(similar to the original triangle. Midsegments are a direct application: the segment joining) Tj
+ET
+BT
+/F1 9 Tf
+54 40 Td
+(Geometry Notes Compendium  |  Page 2 of 7) Tj
+ET
+endstream
+endobj
+4 0 obj
+<< /Length 2976 >>
+stream
+BT
+/F1 11 Tf
+54 720 Td
+(the midpoints of two sides of a triangle is parallel to the third side and has length equal) Tj
+0 -16 Td
+(to one-half the third side.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(5. RIGHT TRIANGLE GEOMETRY) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(The Pythagorean theorem states that in a right triangle with legs a and b and hypotenuse c,) Tj
+0 -16 Td
+(the relationship a^2 + b^2 = c^2 holds. The converse is equally useful: if a triangle with) Tj
+0 -16 Td
+(side lengths a, b, and c satisfies a^2 + b^2 = c^2, then the triangle is right. Many) Tj
+0 -16 Td
+(geometric classification problems begin by checking that equation.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(Special right triangles appear so often that their ratios should be memorized. In a 45-45-90) Tj
+0 -16 Td
+(triangle, the legs are equal and the hypotenuse equals leg times square root of 2. In a) Tj
+0 -16 Td
+(30-60-90 triangle, the side opposite 30 degrees is half the hypotenuse and the side opposite) Tj
+0 -16 Td
+(60 degrees is that short leg times square root of 3. These patterns simplify exact-value) Tj
+0 -16 Td
+(calculations.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(Altitude to the hypotenuse creates three similar triangles. If the altitude from the right) Tj
+0 -16 Td
+(angle meets the hypotenuse and divides it into segments x and y, then the altitude length h) Tj
+0 -16 Td
+(satisfies h^2 = xy. Each leg is the geometric mean of the hypotenuse and the adjacent) Tj
+0 -16 Td
+(hypotenuse segment. These relations help with elegant proofs and often appear in olympiad-) Tj
+0 -16 Td
+(style exercises.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(6. POLYGONS AND ANGLE SUMS) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(A polygon is a closed plane figure formed by line segments. The sum of the interior angles) Tj
+0 -16 Td
+(of an n-gon is \(n - 2\) times 180 degrees. This formula can be justified by partitioning the) Tj
+0 -16 Td
+(polygon into triangles from a single vertex. For example, a hexagon can be divided into four) Tj
+0 -16 Td
+(triangles, so its interior angle sum is 720 degrees.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(Regular polygons have all sides congruent and all angles congruent. The measure of one) Tj
+0 -16 Td
+(interior angle in a regular n-gon is \(\(n - 2\) x 180\) / n degrees. The measure of one) Tj
+0 -16 Td
+(exterior angle is 360 / n degrees. Exterior angles are especially convenient because they) Tj
+0 -16 Td
+(always sum to 360 degrees regardless of the number of sides.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(Diagonals also follow a useful pattern. The number of diagonals in an n-gon is n\(n - 3\) / 2) Tj
+0 -16 Td
+(because each vertex connects to n - 3 nonadjacent vertices, and each diagonal gets counted) Tj
+0 -16 Td
+(twice in that process. Polygon reasoning often reduces to repeated use of triangle facts.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(7. QUADRILATERALS) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(Quadrilaterals include trapezoids, kites, parallelograms, rectangles, rhombi, and squares.) Tj
+ET
+BT
+/F1 9 Tf
+54 40 Td
+(Geometry Notes Compendium  |  Page 3 of 7) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Length 3227 >>
+stream
+BT
+/F1 11 Tf
+54 720 Td
+(Each category carries its own package of properties, and many proofs amount to selecting the) Tj
+0 -16 Td
+(correct package. In a parallelogram, opposite sides are parallel and congruent, opposite) Tj
+0 -16 Td
+(angles are congruent, consecutive angles are supplementary, and the diagonals bisect each) Tj
+0 -16 Td
+(other.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(Rectangles are parallelograms with four right angles. Rhombi are parallelograms with four) Tj
+0 -16 Td
+(congruent sides. Squares satisfy both sets of conditions, so a square is simultaneously a) Tj
+0 -16 Td
+(rectangle and a rhombus. The diagonals of a rectangle are congruent, while the diagonals of) Tj
+0 -16 Td
+(a rhombus are perpendicular and bisect the vertex angles. The diagonals of a square are) Tj
+0 -16 Td
+(congruent, perpendicular, and angle-bisecting.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(Trapezoids have exactly one pair of parallel sides in the standard school definition. In an) Tj
+0 -16 Td
+(isosceles trapezoid, the nonparallel legs are congruent, the base angles are congruent, and) Tj
+0 -16 Td
+(the diagonals are congruent. The median of a trapezoid equals the average of the two bases.) Tj
+0 -16 Td
+(This result is frequently useful in coordinate problems.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(8. CIRCLES) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(A circle is the set of all points in a plane at a fixed distance from a center. A radius) Tj
+0 -16 Td
+(connects the center to the circle, a diameter passes through the center and has length twice) Tj
+0 -16 Td
+(the radius, and a chord connects two points on the circle. A tangent touches the circle at) Tj
+0 -16 Td
+(exactly one point and is perpendicular to the radius drawn to that point of tangency.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(Arc measure equals the measure of the central angle that intercepts the arc. An inscribed) Tj
+0 -16 Td
+(angle measures half the intercepted arc, which leads to many fast angle computations. Angles) Tj
+0 -16 Td
+(formed by two chords intersecting inside a circle equal half the sum of the intercepted) Tj
+0 -16 Td
+(arcs. Angles formed outside a circle by two secants or a secant and a tangent equal half the) Tj
+0 -16 Td
+(difference of the intercepted arcs.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(Power of a point is another central theorem family. If two chords intersect inside a circle,) Tj
+0 -16 Td
+(the products of the segment lengths are equal. If two secants are drawn from an external) Tj
+0 -16 Td
+(point, the product of the external segment and the whole secant is equal for both secants.) Tj
+0 -16 Td
+(If a tangent and secant are drawn from the same external point, the square of the tangent) Tj
+0 -16 Td
+(length equals the product of the external segment and the entire secant.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(9. AREA AND PERIMETER) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(Perimeter measures boundary length, while area measures enclosed surface. The area of a) Tj
+0 -16 Td
+(rectangle is base times height, the area of a triangle is one-half base times height, and) Tj
+0 -16 Td
+(the area of a parallelogram is base times height. For a trapezoid, the area is one-half) Tj
+0 -16 Td
+(times the sum of the bases times the height.) Tj
+ET
+BT
+/F1 9 Tf
+54 40 Td
+(Geometry Notes Compendium  |  Page 4 of 7) Tj
+ET
+endstream
+endobj
+6 0 obj
+<< /Length 3165 >>
+stream
+BT
+/F1 11 Tf
+54 720 Td
+() Tj
+0 -16 Td
+(Circle area is pi r squared and circumference is 2 pi r. Sector area is the same fraction of) Tj
+0 -16 Td
+(the whole circle area as the central angle is of 360 degrees. Arc length is the same) Tj
+0 -16 Td
+(fraction of the circumference. These formulas are easy to memorize if one sees them as) Tj
+0 -16 Td
+(proportional pieces of the full circle.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(Heron's formula gives the area of a triangle when all three side lengths are known. If the) Tj
+0 -16 Td
+(semiperimeter is s = \(a + b + c\) / 2, then area equals the square root of s\(s - a\)\(s - b\)\(s) Tj
+0 -16 Td
+(- c\). This formula is excellent when a height is unavailable. For equilateral triangles, the) Tj
+0 -16 Td
+(area formula simplifies to \(square root of 3 / 4\) times side squared.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(10. TRANSFORMATIONS) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(Geometric transformations include translations, reflections, rotations, and dilations. Rigid) Tj
+0 -16 Td
+(transformations preserve distance and angle measure, so they produce congruent figures.) Tj
+0 -16 Td
+(Dilations preserve angle measure but change lengths by a scale factor, so they produce) Tj
+0 -16 Td
+(similar figures unless the scale factor is 1.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(A translation moves every point by the same vector. A reflection flips a figure across a) Tj
+0 -16 Td
+(line, creating mirror symmetry. A rotation turns a figure around a center by a specified) Tj
+0 -16 Td
+(angle and direction. Coordinate rules describe these transformations precisely, such as \(x,) Tj
+0 -16 Td
+(y\) becoming \(-y, x\) after a 90-degree counterclockwise rotation about the origin.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(Compositions of transformations are central in proof. To show two figures are congruent, one) Tj
+0 -16 Td
+(may describe a sequence of rigid motions that maps one onto the other. This point of view) Tj
+0 -16 Td
+(explains why congruence is an equivalence relation and connects synthetic geometry to) Tj
+0 -16 Td
+(symmetry.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(11. ANALYTIC GEOMETRY OF CIRCLES AND CONICS) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(The standard equation of a circle with center \(h, k\) and radius r is \(x - h\)^2 + \(y - k\)^2 =) Tj
+0 -16 Td
+(r^2. Expanding this equation leads to the general form x^2 + y^2 + Dx + Ey + F = 0, from) Tj
+0 -16 Td
+(which one can recover the center and radius by completing the square. Coordinate proofs) Tj
+0 -16 Td
+(about circles often depend on substituting point coordinates into this equation.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(Parabolas, ellipses, and hyperbolas arise from distance definitions. A parabola is the set) Tj
+0 -16 Td
+(of points equidistant from a focus and directrix. An ellipse is the set of points whose) Tj
+0 -16 Td
+(distances to two foci sum to a constant. A hyperbola is the set of points whose distances to) Tj
+0 -16 Td
+(two foci have a constant absolute difference. Though conics are sometimes treated) Tj
+0 -16 Td
+(separately, they belong naturally in a broader geometry notes collection because they extend) Tj
+0 -16 Td
+(locus reasoning.) Tj
+ET
+BT
+/F1 9 Tf
+54 40 Td
+(Geometry Notes Compendium  |  Page 5 of 7) Tj
+ET
+endstream
+endobj
+7 0 obj
+<< /Length 3176 >>
+stream
+BT
+/F1 11 Tf
+54 720 Td
+() Tj
+0 -16 Td
+(Tangency conditions often translate geometric contact into algebraic multiplicity. If a line) Tj
+0 -16 Td
+(touches a circle at exactly one point, the resulting system has one real solution, which) Tj
+0 -16 Td
+(corresponds to a discriminant of zero after substitution. This bridge between algebra and) Tj
+0 -16 Td
+(geometry is powerful in advanced problem solving.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(12. PROOF STRATEGIES IN GEOMETRY) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(Proof in geometry is not only about remembering theorems but about choosing a path. Good) Tj
+0 -16 Td
+(proofs often begin by marking equal angles, parallel lines, or midpoint relationships and) Tj
+0 -16 Td
+(then asking which theorem package those markings suggest. If a quadrilateral seems to have) Tj
+0 -16 Td
+(diagonals that bisect each other, the parallelogram tests become relevant. If two triangles) Tj
+0 -16 Td
+(share an angle and have a parallel line, similarity should be suspected.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(Working backward is often helpful. If the desired conclusion is that two lengths are equal,) Tj
+0 -16 Td
+(one may try to prove two triangles congruent. If the desired conclusion is that two lines) Tj
+0 -16 Td
+(are parallel, one may aim to show alternate interior angles are congruent. Coordinate) Tj
+0 -16 Td
+(methods can rescue a synthetic problem, but synthetic insight often keeps the algebra) Tj
+0 -16 Td
+(shorter.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(A strong student also tracks hidden constraints. In diagram-based reasoning, figures are not) Tj
+0 -16 Td
+(always drawn to scale, so no statement should rely only on appearance. For instance, a) Tj
+0 -16 Td
+(segment that looks perpendicular might not be unless the problem provides that fact or it) Tj
+0 -16 Td
+(can be derived. Careful proof separates visual intuition from justified inference.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(13. SOLID GEOMETRY) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(Although solid geometry moves into three dimensions, its formulas extend plane ideas. The) Tj
+0 -16 Td
+(volume of a prism is base area times height, and the volume of a pyramid is one-third base) Tj
+0 -16 Td
+(area times height. Cylinders and cones follow parallel formulas, and the volume of a sphere) Tj
+0 -16 Td
+(is four-thirds pi r cubed.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(Surface area measures the total exposed area of a solid. For a cylinder, the lateral surface) Tj
+0 -16 Td
+(area is 2 pi r h and the total surface area adds the two circular bases. For a sphere, the) Tj
+0 -16 Td
+(surface area is 4 pi r squared. Cross-sections and nets help visualize these solids. If a) Tj
+0 -16 Td
+(plane slices a cone parallel to the base, the cross-section is a circle; if it slices at an) Tj
+0 -16 Td
+(angle, the cross-section may be an ellipse.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(Spatial reasoning often combines scale with similarity. If all linear dimensions of a solid) Tj
+0 -16 Td
+(are multiplied by k, then surface area scales by k squared and volume scales by k cubed.) Tj
+0 -16 Td
+(This fact explains why small increases in length can create dramatic changes in capacity.) Tj
+ET
+BT
+/F1 9 Tf
+54 40 Td
+(Geometry Notes Compendium  |  Page 6 of 7) Tj
+ET
+endstream
+endobj
+8 0 obj
+<< /Length 2364 >>
+stream
+BT
+/F1 11 Tf
+54 720 Td
+() Tj
+0 -16 Td
+(14. COMMON GEOMETRY MISTAKES) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(One common mistake is assuming a diagram is drawn to scale. Another is applying a theorem) Tj
+0 -16 Td
+(without its hypotheses; for example, using a tangent-radius perpendicular theorem when the) Tj
+0 -16 Td
+(line is not actually tangent. Students also confuse congruence with similarity and mix) Tj
+0 -16 Td
+(formulas for perimeter, area, and volume.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(In coordinate geometry, sign errors with slope are frequent. A negative reciprocal changes) Tj
+0 -16 Td
+(both sign and position, so the negative reciprocal of 2 is -1/2, not 1/2. In triangle work,) Tj
+0 -16 Td
+(students sometimes use the Pythagorean theorem on triangles that are not right. In circle) Tj
+0 -16 Td
+(geometry, they may forget that an inscribed angle is half the intercepted arc, not equal to) Tj
+0 -16 Td
+(it.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(The best correction strategy is to ask which conditions are actually known, then match those) Tj
+0 -16 Td
+(conditions to the right theorem. Geometry rewards disciplined pattern recognition more than) Tj
+0 -16 Td
+(random formula recall.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(15. PRACTICE-ORIENTED SUMMARY) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(When studying geometry, it helps to organize problems by the main idea that unlocks them. If) Tj
+0 -16 Td
+(a problem mentions parallel lines, think angle relationships and similarity. If a problem) Tj
+0 -16 Td
+(mentions equal distances from a point to two endpoints, think perpendicular bisector. If a) Tj
+0 -16 Td
+(problem centers on a right triangle, check whether the Pythagorean theorem or a special) Tj
+0 -16 Td
+(triangle ratio simplifies the arithmetic.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(For circles, ask whether the angle is central, inscribed, interior, or exterior. For) Tj
+0 -16 Td
+(quadrilaterals, determine whether the key evidence points to a parallelogram, rectangle,) Tj
+0 -16 Td
+(rhombus, square, or trapezoid. For coordinate proofs, choose coordinates that reduce clutter) Tj
+0 -16 Td
+(and expose symmetry.) Tj
+0 -16 Td
+() Tj
+0 -16 Td
+(The most reliable long-term habit is to justify every step with a definition, postulate, or) Tj
+0 -16 Td
+(theorem. That habit turns geometry from a memory test into a logical system.) Tj
+ET
+BT
+/F1 9 Tf
+54 40 Td
+(Geometry Notes Compendium  |  Page 7 of 7) Tj
+ET
+endstream
+endobj
+9 0 obj
+<< /Type /Pages /Kids [10 0 R 11 0 R 12 0 R 13 0 R 14 0 R 15 0 R 16 0 R] /Count 7 >>
+endobj
+10 0 obj
+<< /Type /Page /Parent 9 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 2 0 R >>
+endobj
+11 0 obj
+<< /Type /Page /Parent 9 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 3 0 R >>
+endobj
+12 0 obj
+<< /Type /Page /Parent 9 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 4 0 R >>
+endobj
+13 0 obj
+<< /Type /Page /Parent 9 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 5 0 R >>
+endobj
+14 0 obj
+<< /Type /Page /Parent 9 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 6 0 R >>
+endobj
+15 0 obj
+<< /Type /Page /Parent 9 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 7 0 R >>
+endobj
+16 0 obj
+<< /Type /Page /Parent 9 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 8 0 R >>
+endobj
+17 0 obj
+<< /Type /Catalog /Pages 9 0 R >>
+endobj
+xref
+0 18
+0000000000 65535 f 
+0000000015 00000 n 
+0000000085 00000 n 
+0000003415 00000 n 
+0000006663 00000 n 
+0000009691 00000 n 
+0000012970 00000 n 
+0000016187 00000 n 
+0000019415 00000 n 
+0000021831 00000 n 
+0000021931 00000 n 
+0000022058 00000 n 
+0000022185 00000 n 
+0000022312 00000 n 
+0000022439 00000 n 
+0000022566 00000 n 
+0000022693 00000 n 
+0000022820 00000 n 
+trailer
+<< /Size 18 /Root 17 0 R >>
+startxref
+22870
+%%EOF

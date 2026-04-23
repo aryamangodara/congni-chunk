@@ -3,11 +3,11 @@ from pathlib import Path
 
 import streamlit as st
 
-from rag_demo import TechnicalDocAnalyst
+from cogni_chunk_engine import TechnicalDocAnalyst
 
 
 st.set_page_config(
-    page_title="Cogni Chunk",
+    page_title="Cogni Chunk 📚",
     page_icon="CK",
     layout="wide",
 )
@@ -57,37 +57,37 @@ st.markdown(
 st.markdown(
     """
     <div class="hero">
-        <h1 style="margin-bottom:0.4rem;">Cogni Chunk</h1>
+        <h1 style="margin-bottom:0.4rem;">Cogni Chunk 📚</h1>
         <p style="font-size:1.05rem; margin-bottom:0.25rem;">
             A personal project for document retrieval that can answer questions from long-form markdown notes and PDF study material,
             then show the evidence behind every result.
         </p>
         <p style="color:#475569; margin:0;">
-            Focus areas: structure-aware chunking, PDF-aware ingestion, grounded retrieval, and a clean product experience.
+            Focus areas: structure-aware chunking, PDF-aware ingestion, grounded retrieval, and a clean product experience ✨
         </p>
     </div>
     """,
     unsafe_allow_html=True,
 )
 
-selected_document_name = st.selectbox("Choose a source document", list(DOCUMENTS))
+selected_document_name = st.selectbox("📁 Choose a source document", list(DOCUMENTS))
 doc_path = DOCUMENTS[selected_document_name]
 analyst = TechnicalDocAnalyst(doc_path)
 
 col1, col2, col3 = st.columns(3)
 with col1:
     st.markdown(
-        f"<div class='metric-card'><strong>{len(analyst.chunks)}</strong><br/>Structured sections indexed</div>",
+        f"<div class='metric-card'><strong>{len(analyst.chunks)}</strong><br/>📦 Structured sections indexed</div>",
         unsafe_allow_html=True,
     )
 with col2:
     st.markdown(
-        "<div class='metric-card'><strong>Hybrid-style scoring</strong><br/>Heading, term, and evidence-aware ranking</div>",
+        "<div class='metric-card'><strong>🧠 Hybrid-style scoring</strong><br/>Heading, term, and evidence-aware ranking</div>",
         unsafe_allow_html=True,
     )
 with col3:
     st.markdown(
-        "<div class='metric-card'><strong>Explainable output</strong><br/>Confidence plus top evidence blocks</div>",
+        "<div class='metric-card'><strong>🔎 Explainable output</strong><br/>Confidence plus top evidence blocks</div>",
         unsafe_allow_html=True,
     )
 
@@ -108,10 +108,10 @@ geometry_examples = [
 
 examples = examples if doc_path.suffix.lower() == ".md" else geometry_examples
 
-selected_example = st.selectbox("Demo query", options=["Custom question"] + examples)
+selected_example = st.selectbox("💬 Demo query", options=["Custom question"] + examples)
 default_query = "" if selected_example == "Custom question" else selected_example
 query = st.text_input(
-    "Ask a question about the current document",
+    "❓ Ask a question about the current document",
     value=default_query,
     placeholder="Example: What is the relationship between an inscribed angle and its intercepted arc?",
 )
@@ -119,12 +119,12 @@ query = st.text_input(
 left, right = st.columns([1.5, 1.0])
 
 with right:
-    st.subheader("Project Notes")
+    st.subheader("📝 Project Notes")
     st.write(
         "Use this panel to explain what makes the project credible: visible evidence, grounded answers, and support for both markdown and PDF sources."
     )
     st.caption(f"Source file: {doc_path.resolve()}")
-    with st.expander("What the app is demonstrating"):
+    with st.expander("🚀 What the app is demonstrating"):
         st.markdown(
             "- Structured section parsing from Markdown\n"
             "- Page-aware extraction from PDFs\n"
@@ -136,11 +136,11 @@ with right:
 with left:
     if query:
         response = analyst.answer(query)
-        st.subheader("Answer")
+        st.subheader("✅ Answer")
         st.write(response["answer"])
-        st.caption(f"Confidence: {response['confidence'].upper()}")
+        st.caption(f"Confidence: {response['confidence'].upper()} ⭐")
 
-        st.subheader("Top Evidence")
+        st.subheader("📌 Top Evidence")
         for index, result in enumerate(response["results"], start=1):
             preview = textwrap.shorten(
                 " ".join(result.chunk.content.split()),
@@ -159,7 +159,7 @@ with left:
                 unsafe_allow_html=True,
             )
     else:
-        st.info("Enter a question or choose a demo query to see the retrieval pipeline in action.")
+        st.info("Enter a question or choose a demo query to see the retrieval pipeline in action ⚡")
 
-with st.expander("Preview of indexed source content"):
+with st.expander("📄 Preview of indexed source content"):
     st.text(analyst.document_text[:3000] + "\n...")

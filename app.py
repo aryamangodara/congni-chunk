@@ -27,7 +27,10 @@ st.markdown(
             radial-gradient(circle at top left, rgba(217, 119, 6, 0.18), transparent 30%),
             radial-gradient(circle at top right, rgba(15, 118, 110, 0.16), transparent 28%),
             linear-gradient(180deg, #f8fafc 0%, #fff7ed 45%, #f8fafc 100%);
-        color: #172554;
+        color: #172554 !important;
+    }
+    .stApp p, .stApp label, div[data-testid="stWidgetLabel"] p, .stApp h1, .stApp h2, .stApp h3, .stApp span, .stApp li {
+        color: #172554 !important;
     }
     .hero {
         padding: 1.6rem 1.8rem;
@@ -35,12 +38,20 @@ st.markdown(
         background: rgba(255, 255, 255, 0.82);
         border: 1px solid rgba(148, 163, 184, 0.25);
         box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+        color: #0f172a;
+    }
+    .hero h1, .hero h2, .hero h3, .hero p {
+        color: #0f172a;
     }
     .metric-card {
         padding: 1rem 1.1rem;
         border-radius: 18px;
         background: rgba(255, 255, 255, 0.76);
         border: 1px solid rgba(148, 163, 184, 0.20);
+        color: #0f172a;
+    }
+    .metric-card strong, .metric-card span, .metric-card div {
+        color: #0f172a;
     }
     .evidence-card {
         padding: 1rem 1.1rem;
@@ -48,6 +59,10 @@ st.markdown(
         background: rgba(255, 255, 255, 0.88);
         border-left: 6px solid #0f766e;
         margin-bottom: 0.9rem;
+        color: #0f172a;
+    }
+    .evidence-card strong, .evidence-card span, .evidence-card div {
+        color: #0f172a;
     }
     </style>
     """,

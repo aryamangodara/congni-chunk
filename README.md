@@ -39,20 +39,3 @@ print(run_cli_query("What is the relationship between an inscribed angle and its
 ```bash
 jupyter notebook Intelligent_Technical_Document_Analyst.ipynb
 ```
-
-## Suggested Demo Questions 💬
-
-- Why did retrieval latency improve by about 40 percent in release AKF-2.3?
-- What happens when the vector index is unavailable?
-- Why were write-heavy dashboards slower during the replica failover test?
-- How does Atlas handle ingestion storms during large document migrations?
-- What is the relationship between an inscribed angle and its intercepted arc?
-- How does the altitude to the hypotenuse behave in a right triangle?
-
-## Project Framing 🎯
-
-The strongest pitch is:
-
-1. Start with the pain: technical docs are dense and naive search misses intent.
-2. Show the approach: preserve document structure, retrieve relevant sections, and ground the answer in evidence.
-3. Close on product quality: confidence signals, observable behavior, and a UI that helps people trust the result.

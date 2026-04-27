@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from pathlib import Path
 import math
 import re
+from collections import Counter
 from typing import Iterable, List
 
 from pypdf import PdfReader
@@ -77,33 +78,20 @@ def chunk_from_text(title: str, heading_path: str, content: str) -> Chunk | None
 
 
 def split_markdown_sections(markdown_text: str) -> List[Chunk]:
-    sections: List[Chunk] = []
-    heading_stack: List[str] = []
-    current_lines: List[str] = []
+    sections, stack, lines = [], [], []
 
     def flush_section() -> None:
-        if not current_lines:
-            return
-        chunk = chunk_from_text(
-            title=heading_stack[-1] if heading_stack else "Document Overview",
-            heading_path=" > ".join(heading_stack) if heading_stack else "Document Overview",
-            content="\n".join(current_lines),
-        )
-        current_lines.clear()
-        if chunk:
+        content = "\n".join(lines).strip()
+        if content and (chunk := chunk_from_text(stack[-1] if stack else "Document Overview", " > ".join(stack) if stack else "Document Overview", content)):
             sections.append(chunk)
+        lines.clear()
 
     for raw_line in markdown_text.splitlines():
-        line = raw_line.rstrip()
-        heading_match = re.match(r"^(#{1,6})\s+(.*)$", line)
-        if heading_match:
+        if match := re.match(r"^(#{1,6})\s+(.*)$", raw_line.rstrip()):
             flush_section()
-            level = len(heading_match.group(1))
-            title = heading_match.group(2).strip()
-            heading_stack[:] = heading_stack[: level - 1]
-            heading_stack.append(title)
-            continue
-        current_lines.append(line)
+            stack = stack[:len(match.group(1)) - 1] + [match.group(2).strip()]
+        else:
+            lines.append(raw_line.rstrip())
 
     flush_section()
     return sections
@@ -195,98 +183,48 @@ class TechnicalDocAnalyst:
 
     @staticmethod
     def _compute_idf(chunks: Iterable[Chunk]) -> dict[str, float]:
-        doc_count = 0
-        frequencies: dict[str, int] = {}
-        for chunk in chunks:
-            doc_count += 1
-            for token in set(tokenize(f"{chunk.heading_path} {chunk.content}")):
-                frequencies[token] = frequencies.get(token, 0) + 1
-        return {
-            token: math.log((1 + doc_count) / (1 + freq)) + 1.0
-            for token, freq in frequencies.items()
-        }
+        docs = list(chunks)
+        freqs = Counter(token for c in docs for token in set(tokenize(f"{c.heading_path} {c.content}")))
+        return {tok: math.log((1 + len(docs)) / (1 + freq)) + 1.0 for tok, freq in freqs.items()}
 
     def search(self, query: str, top_k: int = 4) -> List[SearchResult]:
-        query_tokens = tokenize(query)
-        query_bigrams = build_ngrams(query_tokens, size=2)
+        q_tokens, q_bigrams = tokenize(query), build_ngrams(tokenize(query), size=2)
         results: List[SearchResult] = []
+        
         for chunk in self.chunks:
             haystack = f"{chunk.heading_path}\n{chunk.content}".lower()
-            chunk_tokens = tokenize(haystack)
-            if not chunk_tokens:
-                continue
-            chunk_token_set = set(chunk_tokens)
-            chunk_bigrams = build_ngrams(chunk_tokens, size=2)
-            matched_terms = sorted({token for token in query_tokens if token in chunk_token_set})
-            if not matched_terms:
+            c_tokens = tokenize(haystack)
+            
+            if not c_tokens or not (matched := sorted(set(q_tokens) & set(c_tokens))):
                 continue
 
-            score = 0.0
-            for token in matched_terms:
-                tf = chunk_tokens.count(token) / max(len(chunk_tokens), 1)
-                score += tf * self._idf.get(token, 1.0)
-                if token in chunk.heading_path.lower():
-                    score += 0.35
-                if self._idf.get(token, 1.0) > 2.6:
-                    score += 0.12
-            if any(
-                phrase in haystack
-                for phrase in [
-                    "because",
-                    "falls back to",
-                    "results in",
-                    "latency",
-                    "fails",
-                    "incident",
-                    "theorem",
-                    "proof",
-                    "therefore",
-                ]
-            ):
-                score += 0.08
-            score += (len(matched_terms) / max(len(set(query_tokens)), 1)) * 0.18
-            matched_bigrams = query_bigrams & chunk_bigrams
-            score += len(matched_bigrams) * 0.22
-            score += min(chunk.token_count, 160) / 4000
-            if is_reference_section(chunk):
-                score *= 0.35
-            results.append(SearchResult(chunk=chunk, score=score, matched_terms=matched_terms))
+            c_len = len(c_tokens)
+            score = sum((c_tokens.count(t) / c_len) * self._idf.get(t, 1.0) + (0.35 if t in chunk.heading_path.lower() else 0) + (0.12 if self._idf.get(t, 1.0) > 2.6 else 0) for t in matched)
+            score += 0.08 if any(p in haystack for p in ["because", "falls back to", "results in", "latency", "fails", "incident", "theorem", "proof", "therefore"]) else 0.0
+            score += (len(matched) / len(set(q_tokens))) * 0.18 + len(q_bigrams & build_ngrams(c_tokens, size=2)) * 0.22 + min(c_len, 160) / 4000
+            score *= 0.35 if is_reference_section(chunk) else 1.0
+            
+            results.append(SearchResult(chunk=chunk, score=score, matched_terms=matched))
 
         return sorted(results, key=lambda item: item.score, reverse=True)[:top_k]
 
     def answer(self, query: str, top_k: int = 4) -> dict:
         results = self.search(query, top_k=top_k)
         if not results:
-            return {
-                "answer": "I could not find grounded evidence for that query in the current document.",
-                "results": [],
-                "confidence": "low",
-            }
+            return {"answer": "I could not find grounded evidence for that query in the current document.", "results": [], "confidence": "low"}
 
         top_score = results[0].score
-        grounded_results = [
-            result for result in results if result.score >= top_score * 0.45 and not is_reference_section(result.chunk)
-        ]
-        if not grounded_results:
-            grounded_results = [results[0]]
+        valid = [r for r in results if r.score >= top_score * 0.45 and not is_reference_section(r.chunk)] or [results[0]]
 
         evidence_lines: List[str] = []
-        for result in grounded_results[:3]:
-            sentences = re.split(r"(?<=[.!?])\s+", result.chunk.content.replace("\n", " "))
-            best_sentences = [s.strip() for s in sentences if any(term in s.lower() for term in result.matched_terms)]
-            if not best_sentences:
-                best_sentences = [result.chunk.content.strip()]
-            evidence_lines.extend(best_sentences[:2])
+        for r in valid[:3]:
+            sentences = re.split(r"(?<=[.!?])\s+", r.chunk.content.replace("\n", " "))
+            best = [s.strip() for s in sentences if any(t in s.lower() for t in r.matched_terms)]
+            evidence_lines.extend(best[:2] if best else [r.chunk.content.strip()][:2])
 
-        condensed = " ".join(evidence_lines[:4]).strip()
-        leading = grounded_results[0].chunk
-        confidence = "high" if results[0].score > 0.45 else "medium"
-        answer = (
-            f"The strongest evidence points to '{leading.title}'. "
-            f"{condensed} "
-            f"This answer is grounded in sections about {', '.join(result.chunk.title for result in grounded_results[:3])}."
-        )
-        return {"answer": answer, "results": results, "confidence": confidence}
+        titles = [r.chunk.title for r in valid[:3]]
+        answer = f"The strongest evidence points to '{titles[0]}'. {' '.join(evidence_lines[:4]).strip()} This answer is grounded in sections about {', '.join(titles)}."
+        return {"answer": answer, "results": results, "confidence": "high" if top_score > 0.45 else "medium"}
 
 
 def run_cli_query(query: str, document_path: str = "technical_doc.md") -> str:

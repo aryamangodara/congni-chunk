@@ -1,9 +1,12 @@
+import warnings
+warnings.filterwarnings("ignore", message=".*Accessing __path__.*")
+
 import textwrap
 from pathlib import Path
 
 import streamlit as st
 
-from cogni_chunk_engine import TechnicalDocAnalyst
+from cogni_chunk_engine import MultiAgentSystem
 
 
 st.set_page_config(
@@ -87,12 +90,12 @@ st.markdown(
 
 selected_document_name = st.selectbox("📁 Choose a source document", list(DOCUMENTS))
 doc_path = DOCUMENTS[selected_document_name]
-analyst = TechnicalDocAnalyst(doc_path)
+system = MultiAgentSystem(doc_path)
 
 col1, col2, col3 = st.columns(3)
 with col1:
     st.markdown(
-        f"<div class='metric-card'><strong>{len(analyst.chunks)}</strong><br/>📦 Structured sections indexed</div>",
+        f"<div class='metric-card'><strong>{len(system.docs)}</strong><br/>📦 Structured sections indexed</div>",
         unsafe_allow_html=True,
     )
 with col2:
@@ -150,24 +153,26 @@ with right:
 
 with left:
     if query:
-        response = analyst.answer(query)
+        response = system.answer(query)
         st.subheader("✅ Answer")
         st.write(response["answer"])
         st.caption(f"Confidence: {response['confidence'].upper()} ⭐")
 
         st.subheader("📌 Top Evidence")
         for index, result in enumerate(response["results"], start=1):
+            doc = result["doc"]
+            heading_path = doc.metadata.get("heading_path", "")
             preview = textwrap.shorten(
-                " ".join(result.chunk.content.split()),
+                " ".join(doc.page_content.split()),
                 width=320,
                 placeholder="...",
             )
             st.markdown(
                 f"""
                 <div class="evidence-card">
-                    <strong>{index}. {result.chunk.heading_path}</strong><br/>
-                    Score: {result.score:.3f}<br/>
-                    Matched terms: {", ".join(result.matched_terms)}<br/><br/>
+                    <strong>{index}. {heading_path}</strong><br/>
+                    Score: {result['score']:.3f}<br/>
+                    Matched terms: {", ".join(result['matched_terms'])}<br/><br/>
                     {preview}
                 </div>
                 """,
@@ -177,4 +182,4 @@ with left:
         st.info("Enter a question or choose a demo query to see the retrieval pipeline in action ⚡")
 
 with st.expander("📄 Preview of indexed source content"):
-    st.text(analyst.document_text[:3000] + "\n...")
+    st.text(system.document_text[:3000] + "\n...")

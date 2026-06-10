@@ -11,7 +11,7 @@ from cogni_chunk_engine import MultiAgentSystem
 
 st.set_page_config(
     page_title="Cogni Chunk 📚",
-    page_icon="CK",
+    page_icon="📚",
     layout="wide",
 )
 
@@ -88,9 +88,14 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+@st.cache_resource
+def load_system(path_str: str) -> MultiAgentSystem:
+    return MultiAgentSystem(path_str)
+
+
 selected_document_name = st.selectbox("📁 Choose a source document", list(DOCUMENTS))
 doc_path = DOCUMENTS[selected_document_name]
-system = MultiAgentSystem(doc_path)
+system = load_system(str(doc_path))
 
 col1, col2, col3 = st.columns(3)
 with col1:

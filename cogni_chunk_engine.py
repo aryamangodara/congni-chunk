@@ -4,7 +4,7 @@ import math
 import re
 from collections import Counter
 from pathlib import Path
-from typing import Iterable, List, TypedDict
+from typing import List, TypedDict
 
 import nltk
 from nltk.corpus import stopwords
@@ -13,8 +13,22 @@ from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langgraph.graph import StateGraph, START, END
 
-nltk.download("stopwords", quiet=True)
-STOPWORDS = set(stopwords.words("english"))
+# Minimal fallback so the engine still works offline if the NLTK download fails.
+FALLBACK_STOPWORDS = {
+    "a", "an", "the", "and", "or", "but", "if", "then", "else", "when", "while",
+    "of", "to", "in", "on", "at", "by", "for", "with", "about", "into", "through",
+    "is", "are", "was", "were", "be", "been", "being", "am", "do", "does", "did",
+    "have", "has", "had", "it", "its", "this", "that", "these", "those", "as",
+    "from", "not", "no", "so", "than", "too", "very", "can", "will", "just",
+    "what", "which", "who", "whom", "how", "why", "where", "you", "your", "we",
+    "our", "they", "their", "he", "she", "his", "her", "i", "my", "me", "us",
+}
+
+try:
+    nltk.download("stopwords", quiet=True)
+    STOPWORDS = set(stopwords.words("english"))
+except LookupError:
+    STOPWORDS = FALLBACK_STOPWORDS
 
 
 def tokenize(text: str) -> List[str]:
@@ -53,15 +67,17 @@ class ResearcherAgent:
         self._idf = self._compute_idf(self.docs)
 
     @staticmethod
-    def _compute_idf(docs: Iterable[Document]) -> dict[str, float]:
+    def _compute_idf(docs: List[Document]) -> dict[str, float]:
+        doc_count = len(docs)
         freqs = Counter(token for doc in docs for token in set(tokenize(f"{doc.metadata.get('heading_path', '')} {doc.page_content}")))
-        return {tok: math.log((1 + len(list(docs))) / (1 + freq)) + 1.0 for tok, freq in freqs.items()}
+        return {tok: math.log((1 + doc_count) / (1 + freq)) + 1.0 for tok, freq in freqs.items()}
 
     def is_reference_section(self, doc: Document) -> bool:
         return any(m in doc.metadata.get('heading_path', '').lower() for m in ["sample questions", "project presentation notes", "closing notes"])
 
     def search(self, query: str, top_k: int = 4) -> List[dict]:
-        q_tokens, q_bigrams = tokenize(query), build_ngrams(tokenize(query), size=2)
+        q_tokens = tokenize(query)
+        q_bigrams = build_ngrams(q_tokens, size=2)
         results: List[dict] = []
         
         for doc in self.docs:
@@ -128,7 +144,10 @@ class MultiAgentSystem:
             for r in valid[:3]:
                 sentences = re.split(r"(?<=[.!?])\s+", r["doc"].page_content.replace("\n", " "))
                 best = [s.strip() for s in sentences if any(t in s.lower() for t in r["matched_terms"])]
-                evidence_lines.extend(best[:2] if best else [r["doc"].page_content.strip()][:2])
+                if best:
+                    evidence_lines.extend(best[:2])
+                else:
+                    evidence_lines.append(r["doc"].page_content.strip())
 
             titles = [r["doc"].metadata.get("title", "Section") for r in valid[:3]]
             answer = f"The strongest evidence points to '{titles[0]}'. {' '.join(evidence_lines[:4]).strip()} This answer is grounded in sections about {', '.join(titles)}."

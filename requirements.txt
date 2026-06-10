@@ -1,2 +1,7 @@
 streamlit>=1.33,<2
 pypdf>=4,<6
+nltk>=3.8,<4
+langchain-core>=0.2,<1
+langchain-community>=0.2,<1
+langchain-text-splitters>=0.2,<1
+langgraph>=0.1,<1
